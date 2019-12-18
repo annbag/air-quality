@@ -6,20 +6,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <link href="https://fonts.googleapis.com/css?family=Muli:400,900&display=swap&subset=latin-ext" rel="stylesheet">
+    <link rel="stylesheet" href="./styles/styles.css">
 </head>
 
 <body>
-    <form id="place-form">
-        <label for="longitude">Długość:</label>
-        <input type="text" name="longitude" id="longitude">
-        <label for="latitude">Szerokość:</label>
-        <input type="text" name="latitude" id="latitude">
-        <input type="submit" value="Wyślij">
-    </form>
-    <button id="display-data">Wyświetl dane</button>
-    <div id="station">
-    </div>
-    <div id="measurements"></div>
+    <h1 class="site-title">Sprawdź jakość powietrza</h1>
+    <main class="main-container">
+        <section>
+            <form id="place-form" class="place-form">
+                <label for="longitude" class="input-title">Długość:</label>
+                <input type="text" name="longitude" id="longitude" class="lng-input">
+                <label for="latitude" class="input-title">Szerokość:</label>
+                <input type="text" name="latitude" id="latitude" class="lat-input">
+                <input type="submit" value="Wyślij" class="btn">
+            </form>
+            <button id="display-data" class="btn">Wyświetl dane</button>
+        </section>
+
+        <div id="station"></div>
+        <div id="measurements"></div>
+    </main>
+
 
     <script src="./scripts/main.js"></script>
 </body>

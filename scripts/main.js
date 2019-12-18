@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const lat = 52.2405192;
-  const lng = 21.0811282;
+  let lat = 52.2405192;
+  let lng = 21.0811282;
   let station;
   let values;
   const apiKey = '2Cenl7GpErqiQiTBhjvIGOPcPCWF41rt';
@@ -10,10 +10,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const formPlace = document.getElementById('place-form');
 
   formPlace.addEventListener('submit', event => {
-    event.preventDefault();
+    event.preventDefault();    
 
-    const lat = inputLatitude.value;
-    const lng = inputLongitude.value;
+    lat = inputLatitude.value;
+    lng = inputLongitude.value;
 
     return getStationLocation().then(data => {
       if (data[0]) {
@@ -36,6 +36,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const stationDiv = document.getElementById('station');
     const measurementsDiv = document.getElementById('measurements');
 
+    stationDiv.classList.add('station');
+    measurementsDiv.classList.add('measurements');
+
     const { address } = station;
     const { current } = values;
 
@@ -46,7 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const addressElem = document.createElement('p');
     addressElem.classList.add('address');
-    addressElem.innerText = `Adres czujnika: ul. ${address.street}, ${address.number}, ${address.city}, ${address.country}`;
+    addressElem.innerText = `Adres czujnika: ul. ${address.street} ${address.number}, ${address.city}, ${address.country}`;
     stationDiv.appendChild(addressElem);
 
     for (let i = 0; i < current.values.length; i++) {
@@ -65,6 +68,19 @@ document.addEventListener('DOMContentLoaded', () => {
       valueRowElem.appendChild(valueElem);
 
       measurementsDiv.appendChild(valueRowElem);
+
+      const standard = current.standards.find(
+        x => x.pollutant === current.values[i].name
+      );
+      if (standard) {
+        if (standard.percent >= 100) {
+          valueElem.classList.add('high-level');
+        } else if (standard.percent >= 50) {
+          valueElem.classList.add('warning');
+        } else {
+          valueElem.classList.add('low-level');
+        }
+      }
     }
   }
 
