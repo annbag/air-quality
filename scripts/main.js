@@ -3,14 +3,14 @@ document.addEventListener('DOMContentLoaded', () => {
   let lng = 21.0811282;
   let station;
   let values;
-  const apiKey = '2Cenl7GpErqiQiTBhjvIGOPcPCWF41rt';
+  const apiKey = 'qKEUGRSSVLE6AB710I7UR09ZgL2Xh2Md';
 
   const inputLatitude = document.getElementById('latitude');
   const inputLongitude = document.getElementById('longitude');
   const formPlace = document.getElementById('place-form');
 
   formPlace.addEventListener('submit', event => {
-    event.preventDefault();    
+    event.preventDefault();
 
     lat = inputLatitude.value;
     lng = inputLongitude.value;
@@ -36,6 +36,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const stationDiv = document.getElementById('station');
     const measurementsDiv = document.getElementById('measurements');
 
+    stationDiv.innerHTML = '';
+    measurementsDiv.innerHTML = '';
     stationDiv.classList.add('station');
     measurementsDiv.classList.add('measurements');
 
