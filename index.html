@@ -11,24 +11,26 @@
 </head>
 
 <body>
-    <h1 class="site-title">Sprawdź jakość powietrza</h1>
+    
     <main class="main-container">
         <section>
+            <h1 class="site-title">Sprawdź jakość powietrza</h1>
             <form id="place-form" class="place-form">
                 <label for="longitude" class="input-title">Długość:</label>
-                <input type="text" name="longitude" id="longitude" class="lng-input" value="21.0811282">
+                <input type="text" name="longitude" id="longitude" class="lng-input">
                 <label for="latitude" class="input-title">Szerokość:</label>
-                <input type="text" name="latitude" id="latitude" class="lat-input" value="52.2405192">
-                <input type="submit" value="Wyślij" class="btn">
+                <input type="text" name="latitude" id="latitude" class="lat-input">
+                <input type="submit" value="Sprawdź" class="btn">
             </form>
-            <button id="display-data" class="btn">Wyświetl dane</button>
         </section>
 
         <div id="station"></div>
         <div id="measurements"></div>
     </main>
-
-
+    <script src="./scripts/config.js"></script>
+    <script src="./scripts/dom-helper.js"></script>
+    <script src="./scripts/service.js"></script>
+    <script src="./scripts/measurement-component.js"></script>
     <script src="./scripts/main.js"></script>
 </body>
 
