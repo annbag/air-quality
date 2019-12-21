@@ -1,95 +1,82 @@
-class MeasurementComponent {
-    static getMeasurementValue(current, pollutant) {
-        return current.standards.find(x => x.pollutant === pollutant);
+var MeasurementComponent = /** @class */ (function () {
+    function MeasurementComponent() {
     }
-
-    static getLabelForPercent(percent) {
+    MeasurementComponent.getMeasurementValue = function (current, pollutant) {
+        return current.standards.find(function (x) { return x.pollutant === pollutant; });
+    };
+    MeasurementComponent.getLabelForPercent = function (percent) {
         if (percent >= 100) {
             return 'high-level';
-        } else if (percent >= 50) {
+        }
+        else if (percent >= 50) {
             return 'warning';
-        } else {
+        }
+        else {
             return 'low-level';
         }
-    }
-
-    static readPositionFromUI() {
-        const inputLatitude = document.querySelector('#latitude');
-        const inputLongitude = document.querySelector('#longitude');
+    };
+    MeasurementComponent.readPositionFromUI = function () {
+        var inputLatitude = document.querySelector('#latitude');
+        var inputLongitude = document.querySelector('#longitude');
         config.lat = inputLatitude.value;
         config.lng = inputLongitude.value;
-    }
-
-    static setPositionToUI() {
-        const inputLatitude = document.querySelector('#latitude');
-        const inputLongitude = document.querySelector('#longitude');
+    };
+    MeasurementComponent.setPositionToUI = function () {
+        var inputLatitude = document.querySelector('#latitude');
+        var inputLongitude = document.querySelector('#longitude');
         inputLatitude.value = config.lat;
         inputLongitude.value = config.lng;
-    }
-
-    displayAddress(target, { street, number, city, country }) {
-        const $city = document.createElement('p');
+    };
+    MeasurementComponent.prototype.displayAddress = function (target, _a) {
+        var street = _a.street, number = _a.number, city = _a.city, country = _a.country;
+        var $city = document.createElement('p');
         $city.classList.add('title');
         $city.textContent = city;
         target.appendChild($city);
-
-        const $address = document.createElement('p');
+        var $address = document.createElement('p');
         $address.classList.add('address');
-        $address.textContent = `Adres czujnika: ul. ${street} ${number}, ${city}, ${country}`;
+        $address.textContent = "Adres czujnika: ul. " + street + " " + number + ", " + city + ", " + country;
         target.appendChild($address);
-    }
-
-    displayMeasurementsInRow(target, current, measurement) {
-        const $valueRow = document.createElement('div');
+    };
+    MeasurementComponent.prototype.displayMeasurementsInRow = function (target, current, measurement) {
+        var $valueRow = document.createElement('div');
         $valueRow.classList.add('value-row');
-
-        const $name = document.createElement('p');
+        var $name = document.createElement('p');
         $name.classList.add('name');
-        $name.textContent = `${measurement.name}`;
-
-        const $value = document.createElement('p');
+        $name.textContent = "" + measurement.name;
+        var $value = document.createElement('p');
         $value.classList.add('value');
-        $value.textContent = `${measurement.value}`;
-
+        $value.textContent = "" + measurement.value;
         $valueRow.appendChild($name);
         $valueRow.appendChild($value);
-
-        const standard = MeasurementComponent.getMeasurementValue(
-            current,
-            measurement.name
-        );
-
+        var standard = MeasurementComponent.getMeasurementValue(current, measurement.name);
         if (standard) {
-            const label = MeasurementComponent.getLabelForPercent(
-                standard.percent
-            );
+            var label = MeasurementComponent.getLabelForPercent(standard.percent);
             $value.classList.add(label);
         }
-
         target.appendChild($valueRow);
-    }
-
-    displayMeasurementsForStation({ address }, { current }) {
-        const $station = document.getElementById('station');
-        const $measurements = document.getElementById('measurements');
-
+    };
+    MeasurementComponent.prototype.displayMeasurementsForStation = function (_a, _b) {
+        var _this = this;
+        var address = _a.address;
+        var current = _b.current;
+        var $station = document.getElementById('station');
+        var $measurements = document.getElementById('measurements');
         // $station.innerHTML = '';
         // $measurements.innerHTML = '';
         clearDOMElements($station, $measurements);
-
         $station.classList.add('station');
         $measurements.classList.add('measurements');
-
         this.displayAddress($station, address);
-
-        current.values.forEach(value => {
-            this.displayMeasurementsInRow($measurements, current, value);
+        current.values.forEach(function (value) {
+            _this.displayMeasurementsInRow($measurements, current, value);
         });
-    }
-
-    displayErrorMessage(reason) {
+    };
+    MeasurementComponent.prototype.displayErrorMessage = function (reason) {
         console.error(reason);
-        const $station = document.querySelector('#station');
-        $station.textContent = `Wystąpił błąd: ${reason}`;
-    }
-}
+        var $station = document.querySelector('#station');
+        $station.textContent = "Wyst\u0105pi\u0142 b\u0142\u0105d: " + reason;
+    };
+    return MeasurementComponent;
+}());
+//# sourceMappingURL=measurement-component.js.map

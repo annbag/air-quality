@@ -7,23 +7,20 @@ function signRequest() {
         }
     };
 }
-
 function fetchJSON(request) {
-    return fetch(request).then(response => response.json());
+    return fetch(request).then(function (response) { return response.json(); });
 }
-
 function makeRequest(url) {
-    const headers = signRequest();
-    const request = new Request(url, headers);
+    var headers = signRequest();
+    var request = new Request(url, headers);
     return fetchJSON(request);
 }
-
 function getStationLocation() {
-    const url = config.buildStationLocationUrl(config);
+    var url = config.buildStationLocationUrl(config);
     return makeRequest(url);
 }
-
 function getMeasurements(station) {
-    const url = config.buildMeasurementsUrl(station);
+    var url = config.buildMeasurementsUrl(station);
     return makeRequest(url);
 }
+//# sourceMappingURL=service.js.map
