@@ -1,3 +1,5 @@
+import { config } from './config';
+
 function signRequest() {
     return {
         method: 'GET',
@@ -18,12 +20,12 @@ function makeRequest(url: string) {
     return fetchJSON(request);
 }
 
-function getStationLocation() {
+export function getStationLocation() {
     const url = config.buildStationLocationUrl(config);
     return makeRequest(url);
 }
 
-function getMeasurements(station: StationLocation) {
+export function getMeasurements(station: StationLocation) {
     const url = config.buildMeasurementsUrl(station);
     return makeRequest(url);
 }

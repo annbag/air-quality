@@ -1,3 +1,6 @@
+const { MeasurementComponent } = require('./measurement-component');
+const { getStationLocation, getMeasurements } = require('./service');
+
 async function fetchStationMeasurements() {
     const location = await getStationLocation();
 

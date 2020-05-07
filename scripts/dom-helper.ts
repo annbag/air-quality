@@ -4,6 +4,6 @@ function clearDOMElement(box: HTMLElement) {
     }
 }
 
-function clearDOMElements(...$elements: HTMLElement[]) {
+export function clearDOMElements(...$elements: HTMLElement[]) {
     $elements.forEach(clearDOMElement);
 }

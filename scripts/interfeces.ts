@@ -5,6 +5,7 @@ interface Config {
     buildStationLocationUrl: string
     buildMeasurementsUrl: string
 }
+
 interface StationLocation {
     id: number,
     location: Location,
@@ -13,10 +14,12 @@ interface StationLocation {
     airly: boolean,
     sponsor: Sponsor
 }
+
 interface Location {
     latitude: number,
     longitude: number
 }
+
 interface Sponsor {
     id: number,
     name: string,
@@ -24,6 +27,7 @@ interface Sponsor {
     logo: string
     link: string
 }
+
 interface Address {
     country: string,
     city: string,
@@ -31,11 +35,13 @@ interface Address {
     number: string,
     displayAddress1: string
 }
+
 interface Station {
     current: CurrentStation,
     history: any,
     forecast: any
 }
+
 interface CurrentStation {
     fromDateTime: string,
     tillDateTime: string,
@@ -43,10 +49,12 @@ interface CurrentStation {
     indexes: Array<Index>,
     standards: Array<Standard>
 }
+
 interface Measurement {
     name: string,
     value: number
 }
+
 interface Index {
     name: string,
     value: number,
@@ -55,6 +63,7 @@ interface Index {
     advice: string,
     color: string
 }
+
 interface Standard {
     name: string,
     pollutant: string,

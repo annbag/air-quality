@@ -1,4 +1,7 @@
-class MeasurementComponent {
+const { config } = require('./config');
+const { clearDOMElements } = require('./dom-helper');
+
+export class MeasurementComponent {
     static getMeasurementValue(current: CurrentStation, pollutant: String) {
         return current.standards.find(x => x.pollutant === pollutant);
     }
