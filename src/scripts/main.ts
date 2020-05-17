@@ -1,3 +1,6 @@
+require('../styles/styles.scss');
+require('../index.html');
+
 const { MeasurementComponent } = require('./measurement-component');
 const { getStationLocation, getMeasurements } = require('./service');
 
