@@ -26,3 +26,4 @@ Project is created with:
 * HTML5
 * CSS3 / SCSS
 * JavaScript / TypeScript
+* Webpack
