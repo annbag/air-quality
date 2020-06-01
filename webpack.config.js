@@ -16,7 +16,6 @@ module.exports = {
             {
                 test: /\.s[ac]ss$/i,
                 use: [
-                    "style-loader",
                     {
                         loader: "file-loader",
                         options: {
