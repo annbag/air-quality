@@ -1,4 +1,6 @@
 const path = require('path');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 
 module.exports = {
     mode: 'development',
@@ -10,11 +12,11 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.tsx?$/,
+                test: /\.ts?$/,
                 loader: 'ts-loader',
             },
             {
-                test: /\.s[ac]ss$/i,
+                test: /\.scss$/i,
                 use: [
                     {
                         loader: "file-loader",
@@ -39,5 +41,11 @@ module.exports = {
     resolve: {
         extensions: ['.ts', '.js'],
     },
-    devtool: 'inline-source-map'
+    devtool: 'inline-source-map',
+    plugins: [
+        new MiniCssExtractPlugin({
+            filename: 'bundle.css'
+        }),
+        new OptimizeCSSAssetsPlugin({}),
+    ],
 };
